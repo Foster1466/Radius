@@ -4,7 +4,7 @@ and not the format of whole html file'''
 import bs4
 import json
 
-# First we open the html file which we have to parse
+# First we open the html file which we have to parse. To test this code on other similar html file, just change the name inside open() method
 with open("New Lead .html") as html:
     # here we convert the content of html file to a soup object which is used to extract information
     soup = bs4.BeautifulSoup(html,"lxml")
