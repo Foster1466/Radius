@@ -1,4 +1,9 @@
-# Radius
+# An example to scrape information from a html document
+Concepts: web scrapping, parsing
+
+Clone the repository to desktop.
+Run parser.py which will extract name, email, phone from a given html file.
+HTML file used in this example is a real estate networking website mail which has information of a potential property for sale. Considering these mails are auto generated we can use this script to any similar html file to scrape data from the file.
 
 Running code on linux:
 1: Install python
