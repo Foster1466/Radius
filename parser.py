@@ -1,4 +1,4 @@
-'''Program will extract name, email, phone from a given html file, required only the information inside the html is changed
+'''Program will extract name, email, phone, address, number of beds, bath from a given html file, required only the information inside the html is changed
 and not the format of whole html file'''
 '''BeautifulSoup(bs4) is a Python package for parsing HTML documents'''
 import bs4
@@ -19,8 +19,17 @@ data2 = soup.find_all("td", {"class": "width280"})          # Here I looked for 
 email = data2[0].find("a", {"style": "color: #d92228; text-decoration:none;"}).text     # Then inside data2 list I used find() to locate email. I got that after noticing the color of email text which was red so i used that as exclusive argument
 phone = data2[0].find("a", {"style": "text-decoration:none;border:none;color:#fff;"}).text  # Similarly phone number had a different color so i used that to extract data
 
+# Similarly repeat this technique to extract the address, beds and baths info.
+data3 = soup.find_all("td", {"valign": "top"})
+address = data3[3].find("a", {"style": "color: #d92228; text-decoration:none;"}).text
+
+bed_bath = data3[3].find_all("font")
+beds = bed_bath[2].find("strong").text
+bathtags = bed_bath[2].find_all("strong")
+baths = bathtags[1].text
+
 # Finally insert all the extracted data in a dictionary
-buyer = {'Name':name, 'email':email, 'phone':phone}
+buyer = {'Name':name, 'email':email, 'phone':phone, 'address':address, 'beds':beds, 'baths':baths}
 
 # Using dumps method from json we cast the dictionary into json format
 s = json.dumps(buyer)
